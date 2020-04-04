@@ -60,7 +60,7 @@ public class OrderController {
 	@RequestMapping("/list")
 	public String listOrder(Model model) {
 		List<Order> orders = orderService.getOrders();
-		model.addAttribute("customers", orders);
+		model.addAttribute("orders", orders);
 		return "list-orders";
 	}
 

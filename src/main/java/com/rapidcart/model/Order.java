@@ -1,5 +1,9 @@
 package com.rapidcart.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +28,7 @@ public class Order {
 	private int orderTotal;
 
 	@Column(name = "ORDER_DATE")
-	private int orderDate;
+	private Date orderDate;
 
 	@Column(name = "ZIPCODE")
 	private int zipcode;
@@ -53,12 +57,15 @@ public class Order {
 		this.orderTotal = orderTotal;
 	}
 
-	public int getOrderDate() {
-		return orderDate;
+	public String getOrderDate() {
+		if (orderDate != null) {
+			return new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(orderDate);
+		}
+		return "YYYY-MM-DD";
 	}
 
-	public void setOrderDate(int orderDate) {
-		this.orderDate = orderDate;
+	public void setOrderDate(String orderDate) throws ParseException {
+		this.orderDate = new SimpleDateFormat("yyyy-mm-dd").parse(orderDate);
 	}
 
 	public int getZipcode() {

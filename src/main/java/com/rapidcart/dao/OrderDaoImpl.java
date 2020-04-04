@@ -33,13 +33,15 @@ public class OrderDaoImpl implements OrderDao {
 
 	@Override
 	public List<Order> getOrders() {
-		return sessionFactory.getCurrentSession().createQuery("from ORDER_TABLE order by id").getResultList();
+		List<Order> o1 = sessionFactory.getCurrentSession().createQuery("FROM Order ORDER BY ORDER_ID").getResultList();
+		System.out.println(o1);
+		return o1;
 	}
 
 	@Override
 	public void deleteOrder(String id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query<Order> query = session.createQuery("DELETE FROM ORDER_TABLE WHERE id=:id");
+		Query<Order> query = session.createQuery("DELETE FROM Order WHERE ORDER_ID=:id");
 		query.setParameter("id", id);
 		query.executeUpdate();
 	}
