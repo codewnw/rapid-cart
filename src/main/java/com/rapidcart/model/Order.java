@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ORDER")
+@Table(name = "ORDER_TABLE")
 public class Order {
 
 	@Id
@@ -21,13 +21,20 @@ public class Order {
 	private Customer customer; // Foreign Key
 
 	@Column(name = "ORDER_TOTAL")
-	private int orderTotalPrice;
+	private int orderTotal;
 
-	public Order(String orderId, Customer customer, int orderTotalPrice) {
-		super();
+	@Column(name = "ORDER_DATE")
+	private int orderDate;
+
+	@Column(name = "ZIPCODE")
+	private int zipcode;
+
+	public Order(String orderId, Customer customer, int orderTotal, int orderDate, int zipcode) {
 		this.orderId = orderId;
 		this.customer = customer;
-		this.orderTotalPrice = orderTotalPrice;
+		this.orderTotal = orderTotal;
+		this.orderDate = orderDate;
+		this.zipcode = zipcode;
 	}
 
 	public String getOrderId() {
@@ -46,17 +53,28 @@ public class Order {
 		this.customer = customer;
 	}
 
-	public int getOrderTotalPrice() {
-		return orderTotalPrice;
+	public int getOrderTotal() {
+		return orderTotal;
 	}
 
-	public void setOrderTotalPrice(int orderTotalPrice) {
-		this.orderTotalPrice = orderTotalPrice;
+	public void setOrderTotal(int orderTotal) {
+		this.orderTotal = orderTotal;
 	}
 
-	@Override
-	public String toString() {
-		return "Order [orderId=" + orderId + ", customer=" + customer + ", orderTotalPrice=" + orderTotalPrice + "]";
+	public int getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(int orderDate) {
+		this.orderDate = orderDate;
+	}
+
+	public int getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(int zipcode) {
+		this.zipcode = zipcode;
 	}
 
 }
