@@ -29,14 +29,6 @@ public class Order {
 	@Column(name = "ZIPCODE")
 	private int zipcode;
 
-	public Order(String orderId, Customer customer, int orderTotal, int orderDate, int zipcode) {
-		this.orderId = orderId;
-		this.customer = customer;
-		this.orderTotal = orderTotal;
-		this.orderDate = orderDate;
-		this.zipcode = zipcode;
-	}
-
 	public String getOrderId() {
 		return orderId;
 	}

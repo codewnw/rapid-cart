@@ -39,7 +39,7 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public void deleteOrder(String id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("DELETE FROM ORDER_TABLE WHERE id=:id");
+		Query<Order> query = session.createQuery("DELETE FROM ORDER_TABLE WHERE id=:id");
 		query.setParameter("id", id);
 		query.executeUpdate();
 	}
