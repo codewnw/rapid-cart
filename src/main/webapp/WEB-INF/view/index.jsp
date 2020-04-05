@@ -7,12 +7,19 @@
 		<li><a href="customers/add">Add Customer</a></li>
 		<li><a href="customers/list">List Customers</a></li>
 	</ul>
-<hr>
+  
+  <hr>
 	<h2>Item Controller</h2>
 	<ul>
 		<li><a href="${pageContext.request.contextPath}/items/add">Add Items</a></li>
 		<li><a href="${pageContext.request.contextPath}/items/list">List Items</a></li>
 	</ul>
-<hr>
+  
+  <hr>
+  <h1>Order Controller</h1>
+	<ul>
+		<li><a href="orders/add">Add Order</a></li>
+		<li><a href="orders/list">List Orders</a></li>
+	</ul>
 </body>
 </html>
