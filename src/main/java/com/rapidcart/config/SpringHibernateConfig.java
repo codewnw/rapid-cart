@@ -40,7 +40,7 @@ public class SpringHibernateConfig {
 
 		Properties hibernateProps = new Properties();
 		hibernateProps.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
-		hibernateProps.setProperty("show_sql", "false");
+		hibernateProps.setProperty("show_sql", "true");
 
 		sessionFactory.setHibernateProperties(hibernateProps);
 		return sessionFactory;

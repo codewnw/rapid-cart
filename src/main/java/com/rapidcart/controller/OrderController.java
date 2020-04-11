@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.rapidcart.model.Customer;
 import com.rapidcart.model.Order;
 import com.rapidcart.service.OrderService;
+import com.rapidcart.swagger.SwaggerApiResponses;
 
+@SwaggerApiResponses
 @Controller
 @RequestMapping("/orders")
 public class OrderController {

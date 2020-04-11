@@ -1,6 +1,5 @@
 package com.rapidcart.config;
 
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 
 import springfox.documentation.builders.PathSelectors;

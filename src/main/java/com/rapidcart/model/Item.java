@@ -1,27 +1,36 @@
 package com.rapidcart.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "ITEM")
 public class Item {
-	
+
 	@Id
 	@Column(name = "ID")
 	private String id;
-	
+
 	@Column(name = "NAME")
 	private String name;
-	
+
 	@Column(name = "QNTY")
 	private Integer qnty;
 
 	@Column(name = "PRICE")
 	private Integer price;
-	
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ID")
+	private Set<OrderDetail> orderDetails;
+
 	public String getId() {
 		return id;
 	}
@@ -58,6 +67,5 @@ public class Item {
 	public String toString() {
 		return "Item [id=" + id + ", name=" + name + ",price=" + price + ",qnty=" + qnty + "]";
 	}
-
 
 }

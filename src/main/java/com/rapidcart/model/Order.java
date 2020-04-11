@@ -3,12 +3,14 @@ package com.rapidcart.model;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -32,6 +34,18 @@ public class Order {
 
 	@Column(name = "ZIPCODE")
 	private int zipcode;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ORDER_ID")
+	private Set<OrderDetail> orderDetails;
+
+	public Set<OrderDetail> getOrderDetails() {
+		return orderDetails;
+	}
+
+	public void setOrderDetails(Set<OrderDetail> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
 
 	public String getOrderId() {
 		return orderId;

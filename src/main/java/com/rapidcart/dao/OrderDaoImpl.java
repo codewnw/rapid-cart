@@ -33,9 +33,7 @@ public class OrderDaoImpl implements OrderDao {
 
 	@Override
 	public List<Order> getOrders() {
-		List<Order> o1 = sessionFactory.getCurrentSession().createQuery("FROM Order ORDER BY ORDER_ID").getResultList();
-		System.out.println(o1);
-		return o1;
+		return sessionFactory.getCurrentSession().createQuery("FROM Order ORDER BY ORDER_ID").getResultList();
 	}
 
 	@Override
