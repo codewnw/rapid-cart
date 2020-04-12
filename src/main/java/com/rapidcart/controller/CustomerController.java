@@ -3,6 +3,7 @@ package com.rapidcart.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -20,6 +21,12 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerService customerService;
+
+	@Value("${rapidcart.copyright}")
+	private String copyright;
+
+	@Value("${customer.type:basic}")
+	private String customerType;
 
 	@GetMapping("/add")
 	public String createCustomer(Model model) {
@@ -60,6 +67,8 @@ public class CustomerController {
 	public String listCustomer(Model model) {
 		List<Customer> customers = customerService.getCustomers();
 		model.addAttribute("customers", customers);
+		System.out.println("----" + copyright);
+		System.out.println("----" + customerType);
 		return "list-customers";
 	}
 

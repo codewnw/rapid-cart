@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.rapidcart.model.Item;
 
-
-
 public interface ItemService {
 	Long createItem(Item item);
 
