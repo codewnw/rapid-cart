@@ -37,13 +37,13 @@ public class Order {
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ORDER_ID")
-	private Set<OrderDetail> orderDetails;
+	private Set<OrderLine> orderDetails;
 
-	public Set<OrderDetail> getOrderDetails() {
+	public Set<OrderLine> getOrderLines() {
 		return orderDetails;
 	}
 
-	public void setOrderDetails(Set<OrderDetail> orderDetails) {
+	public void setOrderLines(Set<OrderLine> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
 

@@ -11,25 +11,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ORDER_DETAIL")
-public class OrderDetail {
-
-	@Id
-	@Column(name = "ORDER_DETAIL_ID")
-	private String orderDetailId; // Primary Key
+public class OrderLine {
 
 	@Column(name = "QUANTITY")
 	private int quantity;
 
 	@Column(name = "PRICE")
 	private int price;
-
-	public String getOrderDetailId() {
-		return orderDetailId;
-	}
-
-	public void setOrderDetailId(String orderDetailId) {
-		this.orderDetailId = orderDetailId;
-	}
 
 	public int getQuantity() {
 		return quantity;

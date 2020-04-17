@@ -2,6 +2,8 @@ package com.rapidcart.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,11 +22,15 @@ import com.rapidcart.swagger.SwaggerApiResponses;
 @RequestMapping("/orders")
 public class OrderController {
 
+	private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
+
 	@Autowired
 	private OrderService orderService;
 
 	@GetMapping("/add")
 	public String createOrder(Model model) {
+		logger.info("Inside Order Controller");
+		logger.debug("Inside Order Controller");
 		Order order = new Order();
 		model.addAttribute("order", order);
 		return "add-order";

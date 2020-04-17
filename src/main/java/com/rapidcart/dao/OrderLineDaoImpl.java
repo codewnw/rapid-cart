@@ -10,41 +10,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.rapidcart.model.Order;
-import com.rapidcart.model.OrderDetail;
+import com.rapidcart.model.OrderLine;
 
 @Repository
-public class OrderDetailDaoImpl implements OrderDetailDao {
+public class OrderLineDaoImpl implements OrderLineDao {
 
 	@Autowired
 	SessionFactory sessionFactory;
 
 	@Override
-	public OrderDetail getOrderDetail(String orderDetailId) {
-		return sessionFactory.getCurrentSession().get(OrderDetail.class, orderDetailId);
+	public OrderLine getOrderLine(String orderDetailId) {
+		return sessionFactory.getCurrentSession().get(OrderLine.class, orderDetailId);
 	}
 
 	@Override
-	public Long createOrderDetail(OrderDetail orderDetail) {
+	public Long createOrderLine(OrderLine orderDetail) {
 		return (Long) sessionFactory.getCurrentSession().save(orderDetail);
 	}
 
 	@Override
-	public void createOrUpdateOrderDetail(OrderDetail orderDetail) {
+	public void createOrUpdateOrderLine(OrderLine orderDetail) {
 		sessionFactory.getCurrentSession().save(orderDetail);
 	}
 
 	@Override
-	public void deleteOrderDetail(String orderDetailId) {
+	public void deleteOrderLine(String orderDetailId) {
 		Session session = sessionFactory.getCurrentSession();
-		Query<Order> query = session.createQuery("DELETE FROM OrderDetail WHERE orderDetailId =: orderDetailId");
+		Query<Order> query = session.createQuery("DELETE FROM OrderLine WHERE orderDetailId =: orderDetailId");
 		query.setParameter("orderDetailId", orderDetailId);
 		query.executeUpdate();
 	}
 
 	@Override
-	public Set<OrderDetail> getOrderDetailsByOrderId(String orderId) {
+	public Set<OrderLine> getOrderLinesByOrderId(String orderId) {
 
-		return new HashSet<OrderDetail>(sessionFactory.getCurrentSession()
+		return new HashSet<OrderLine>(sessionFactory.getCurrentSession()
 				.createQuery("FROM orderDetails ORDER BY orderDetailsId").getResultList());
 	}
 

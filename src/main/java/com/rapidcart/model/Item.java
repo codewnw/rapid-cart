@@ -29,7 +29,7 @@ public class Item {
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ID")
-	private Set<OrderDetail> orderDetails;
+	private Set<OrderLine> orderLine;
 
 	public String getId() {
 		return id;
