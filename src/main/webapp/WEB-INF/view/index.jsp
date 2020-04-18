@@ -321,7 +321,7 @@
 								</div>
 								<!-- Product Description -->
 								<div class="product-description">
-									<span>${item.brand}</span> <a href="single-product-details.html">
+									<span>${item.brand}</span> <a href="${pageContext.request.contextPath}/items/${item.id}">
 										<h6>${item.name}</h6>
 									</a>
 									<p class="product-price">${item.price}</p>

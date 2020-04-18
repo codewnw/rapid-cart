@@ -2,16 +2,23 @@ package com.rapidcart.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.rapidcart.model.Customer;
+import com.rapidcart.constant.ViewConstant;
+import com.rapidcart.exception.OrderNotFoundException;
 import com.rapidcart.model.Order;
 import com.rapidcart.service.OrderService;
 
@@ -64,8 +71,26 @@ public class OrderController {
 		return "list-orders";
 	}
 
+	@Transactional
+	@RequestMapping("/{id}")
+	public @ResponseBody Order getOrder(@PathVariable("id") String id) {
+		Order order = orderService.getOrder(id);
+		if (order == null) {
+			throw new OrderNotFoundException(String.format("Order %d not found", id));
+		}
+		return order;
+	}
+
 	private static String getOrderId() {
 		return "ORD" + System.currentTimeMillis();
 	}
 
+	@ExceptionHandler(value = OrderNotFoundException.class)
+	public ModelAndView handleOrderNotFoundException(HttpServletRequest req, Exception e) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("exception", e);
+		mav.addObject("url", req.getRequestURL());
+		mav.setViewName(ViewConstant.GLOBAL_ERROR_VIEW);
+		return mav;
+	}
 }

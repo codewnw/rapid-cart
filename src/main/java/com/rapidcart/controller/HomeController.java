@@ -31,6 +31,7 @@ public class HomeController {
 
 	@GetMapping("/contact")
 	public String contact() {
+		int i = 10 / 0;
 		return "contact";
 	}
 
