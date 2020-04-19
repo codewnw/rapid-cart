@@ -121,7 +121,7 @@
 				<!-- Cart Area -->
 				<div class="cart-area">
 					<a href="#" id="essenceCartBtn"><img
-						src="resources/img/core-img/bag.svg" alt=""> <span>3</span></a>
+						src="resources/img/core-img/bag.svg" alt=""> <span id="cart-item-count">0</span></a>
 				</div>
 			</div>
 
@@ -136,8 +136,8 @@
 
 		<!-- Cart Button -->
 		<div class="cart-button">
-			<a href="#" id="rightSideCart"><img
-				src="resources/img/core-img/bag.svg" alt=""> <span>3</span></a>
+			<a id="cart" href="${pageContext.request.contextPath}/carts/checkout?"><img
+				src="resources/img/core-img/bag.svg" alt=""> <span id="inner-cart-item-count">0</span></a>
 		</div>
 
 		<div class="cart-content d-flex">
@@ -330,7 +330,10 @@
 									<div class="hover-content">
 										<!-- Add to Cart -->
 										<div class="add-to-cart-btn">
-											<a href="#" class="btn essence-btn">Add to Cart</a>
+											<a href="#" 
+											onclick="f1('${item.id}'); return false;"
+											id="add-to-cart"
+											class="btn essence-btn">Add to Cart</a>
 										</div>
 									</div>
 								</div>
@@ -612,6 +615,7 @@
 	<script src="resources/js/classy-nav.min.js"></script>
 	<!-- Active js -->
 	<script src="resources/js/active.js"></script>
+	<script src="resources/js/add-to-cart.js"></script>
 
 </body>
 

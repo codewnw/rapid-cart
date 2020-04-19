@@ -72,7 +72,7 @@ public class ItemController {
 
 	@Transactional
 	@GetMapping("/{id}")
-	public String listCustomer(@PathVariable("id") String id, Model model) {
+	public String item(@PathVariable("id") String id, Model model) {
 		Item item = itemService.getItem(id);
 		if (item == null) {
 			throw new ItemNotFoundException(String.format("Item %s not found.", id));
