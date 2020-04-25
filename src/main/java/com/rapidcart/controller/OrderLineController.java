@@ -1,5 +1,6 @@
 package com.rapidcart.controller;
 
+import java.util.List;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,34 +32,33 @@ public class OrderLineController {
 	@GetMapping("/add")
 	public String createOrderLines(Model model) {
 		model.addAttribute("orderLine", new OrderLine());
-		model.addAttribute("order", new Order());
-		return "add-order-detail";
-	}
-
-	@Transactional
-	@RequestMapping("/update")
-	public String updateOrderLines(@RequestParam("id") String orderId, Model model) {
-
-		logger.debug("Inside updateOrderLines() Method");
-
-		Set<OrderLine> orderLine = orderLineService.getOrderLinesByOrderId(orderId);
-
-		model.addAttribute("order", orderLine);
-
 		return "add-order-detail";
 	}
 
 	/*
 	 * @Transactional
 	 * 
-	 * @RequestMapping("/save") public String
-	 * saveOrderLines(@ModelAttribute("orderdetails") String OrderLines, Model
-	 * model) { if (order.getOrderId() == null || order.getOrderId().equals("")) {
-	 * order.setOrderId(getOrderId()); }
-	 * orderLineService.createOrUpdateOrderLine(order); List<Order> orders =
-	 * orderLineService.getOrders(); model.addAttribute("orders", orders); return
-	 * "list-order-detail"; }
+	 * @RequestMapping("/update") public String updateOrderLines(@RequestParam("id")
+	 * String orderId, Model model) {
+	 * 
+	 * logger.debug("Inside updateOrderLines() Method");
+	 * 
+	 * Set<OrderLine> orderLine = orderLineService.getOrderLinesByOrderId(orderId);
+	 * 
+	 * model.addAttribute("order", orderLine);
+	 * 
+	 * return "add-order-detail"; }
 	 */
+
+	@Transactional
+
+	@RequestMapping("/save")
+	public void saveOrderLines(@ModelAttribute("orderline") OrderLine orderLines, Model model) {
+		orderLineService.createOrUpdateOrderLine(orderLines);
+		// List<Order> orders = orderLineService.getOrders();
+		// model.addAttribute("orders", orders);
+		// return "list-order-detail";
+	}
 
 	@Transactional
 	@RequestMapping("/delete")
@@ -73,10 +74,6 @@ public class OrderLineController {
 		Set<OrderLine> orderLines = orderLineService.getOrderLinesByOrderId(orderId);
 		model.addAttribute("orders", orderLines);
 		return "list-order-details";
-	}
-
-	private static String getOrderLinesId() {
-		return "ORDTLS" + System.currentTimeMillis();
 	}
 
 }

@@ -18,7 +18,7 @@ table, th, td {
 </head>
 <body>
 	<table>
-		<form:form action="save" modelAttribute="orderDetail">
+		<form:form action="save" modelAttribute="orderLine">
 
 			<tr>
 				<td>Order Total :</td>
@@ -29,8 +29,15 @@ table, th, td {
 				<td><form:input path="quantity" /></td>
 			</tr>
 
-			<form:input path="orderDetailId" type="hidden" />
+			<tr>
+				<td>Order ID :</td>
+				<td><form:input path="orderLineKey.orderId" /></td>
+			</tr>
 
+<tr>
+				<td>Item ID :</td>
+				<td><form:input path="orderLineKey.itemId" /></td>
+			</tr>
 			<tr>
 				<td><input type="submit" value="Save"></td>
 			</tr>

@@ -28,8 +28,8 @@ public class Item {
 	private Integer price;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ID")
-	private Set<OrderLine> orderLine;
+	@JoinColumn(name = "ITEM_ID")
+	private Set<OrderLine> orderLines;
 
 	public String getId() {
 		return id;

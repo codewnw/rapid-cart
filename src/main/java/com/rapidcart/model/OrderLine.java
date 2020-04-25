@@ -1,23 +1,30 @@
 package com.rapidcart.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ORDER_DETAIL")
+@Table(name = "ORDER_LINE")
 public class OrderLine {
+
+	@EmbeddedId
+	private OrderLineKey orderLineKey;
 
 	@Column(name = "QUANTITY")
 	private int quantity;
 
 	@Column(name = "PRICE")
 	private int price;
+
+	public OrderLineKey getOrderLineKey() {
+		return orderLineKey;
+	}
+
+	public void setOrderLineKey(OrderLineKey orderLineKey) {
+		this.orderLineKey = orderLineKey;
+	}
 
 	public int getQuantity() {
 		return quantity;
