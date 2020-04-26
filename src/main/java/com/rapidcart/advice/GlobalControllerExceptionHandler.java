@@ -27,6 +27,7 @@ public class GlobalControllerExceptionHandler {
 	@ExceptionHandler(value = Exception.class)
 	public ModelAndView handleException(HttpServletRequest req, Exception e) throws Exception {
 		ModelAndView mav = new ModelAndView();
+		e.printStackTrace();
 		if (e instanceof SQLGrammarException) {
 			mav.addObject("exception", e);
 			mav.addObject("url", req.getRequestURL());

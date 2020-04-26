@@ -2,7 +2,6 @@ package com.rapidcart.dao;
 
 import java.util.List;
 
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -16,7 +15,7 @@ public class ItemDaoImpl implements ItemDao {
 
 	@Autowired
 	SessionFactory sessionFactory;
-	
+
 	@Override
 	public Long createItem(Item item) {
 		return (Long) sessionFactory.getCurrentSession().save(item);
@@ -33,9 +32,17 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	@Override
+	public List<Item> getItemsByIds(List<String> ids) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Item item where id in (:ids)");
+		query.setParameter("ids", ids);
+		return query.getResultList();
+	}
+
+	@Override
 	public void createOrUpdateItem(Item item) {
 		sessionFactory.getCurrentSession().saveOrUpdate(item);
-		
+
 	}
 
 	@Override
@@ -44,7 +51,7 @@ public class ItemDaoImpl implements ItemDao {
 		Query query = session.createQuery("DELETE FROM Item WHERE id=:id");
 		query.setParameter("id", id);
 		query.executeUpdate();
-		
+
 	}
-	
+
 }

@@ -12,6 +12,8 @@ public interface ItemDao {
 	Item getItem(String id);
 
 	List<Item> getItems();
+	
+	List<Item> getItemsByIds(List<String> ids);
 
 	void createOrUpdateItem(Item item);
 

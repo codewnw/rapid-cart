@@ -12,6 +12,8 @@ public interface ItemService {
 	List<Item> getItems();
 
 	void createOrUpdateItem(Item item);
+	
+	List<Item> getItemsByIds(List<String> ids);
 
 	void deleteItem(String id);
 
