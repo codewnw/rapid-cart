@@ -47,14 +47,14 @@ public class CartController {
 		List<Item> items = itemService.getItemsByIds(ids);
 		model.addAttribute("items", items);
 		Checkout checkout = new Checkout();
-		checkout.setItems(items);
+		checkout.setIds(ids);
 		model.addAttribute("checkout", checkout);
 		return "checkout";
 	}
 
 	@PostMapping(value = "/place-order")
 	public String placeOrder(@ModelAttribute("checkout") Checkout checkout) {
-		System.out.println("Items: " + checkout.getItems());
+		System.out.println("Items: " + checkout.getIds());
 		return "index";
 	}
 }

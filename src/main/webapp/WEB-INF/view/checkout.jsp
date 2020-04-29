@@ -430,9 +430,12 @@
 								</div>
 							</div>
 						</div>
-<form:form method="post" action="${pageContext.request.contextPath}/carts/place-order" modelAttribute="checkout">
-
-						<input type="submit" href="#" class="btn essence-btn" value="Place Order">
+						<form:form method="post"
+							action="${pageContext.request.contextPath}/carts/place-order"
+							modelAttribute="checkout">
+							<form:hidden path="ids" />
+							<input type="submit" href="#" class="btn essence-btn"
+								value="Place Order">
 						</form:form>
 					</div>
 				</div>

@@ -4,14 +4,13 @@ import java.util.List;
 
 public class Checkout {
 
-	private List<Item> items;
+	private List<String> ids;
 
-	public List<Item> getItems() {
-		return items;
+	public List<String> getIds() {
+		return ids;
 	}
 
-	public void setItems(List<Item> items) {
-		this.items = items;
+	public void setIds(List<String> ids) {
+		this.ids = ids;
 	}
-
 }
